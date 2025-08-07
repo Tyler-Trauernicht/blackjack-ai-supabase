@@ -1,0 +1,29 @@
+// /public/data/basicStrategy.json
+{
+  "hardTotals": {
+    "8": { "2": "Hit", "3": "Hit", "4": "Hit", "5": "Hit", "6": "Hit", "7": "Hit", "8": "Hit", "9": "Hit", "10": "Hit", "A": "Hit" },
+    "9": { "2": "Hit", "3": "Double", "4": "Double", "5": "Double", "6": "Double", "7": "Hit", "8": "Hit", "9": "Hit", "10": "Hit", "A": "Hit" },
+    "10": { "2": "Double", "3": "Double", "4": "Double", "5": "Double", "6": "Double", "7": "Double", "8": "Double", "9": "Double", "10": "Hit", "A": "Hit" },
+    "11": { "2": "Double", "3": "Double", "4": "Double", "5": "Double", "6": "Double", "7": "Double", "8": "Double", "9": "Double", "10": "Double", "A": "Double" },
+    "12": { "2": "Hit", "3": "Hit", "4": "Stand", "5": "Stand", "6": "Stand", "7": "Hit", "8": "Hit", "9": "Hit", "10": "Hit", "A": "Hit" },
+    "13": { "2": "Stand", "3": "Stand", "4": "Stand", "5": "Stand", "6": "Stand", "7": "Hit", "8": "Hit", "9": "Hit", "10": "Hit", "A": "Hit" },
+    "14": { "2": "Stand", "3": "Stand", "4": "Stand", "5": "Stand", "6": "Stand", "7": "Hit", "8": "Hit", "9": "Hit", "10": "Hit", "A": "Hit" }
+  },
+  "softTotals": {
+    "A2": { "2": "Hit", "3": "Hit", "4": "Hit", "5": "Double", "6": "Double", "7": "Hit", "8": "Hit", "9": "Hit", "10": "Hit", "A": "Hit" },
+    "A3": { "2": "Hit", "3": "Hit", "4": "Hit", "5": "Double", "6": "Double", "7": "Hit", "8": "Hit", "9": "Hit", "10": "Hit", "A": "Hit" },
+    "A4": { "2": "Hit", "3": "Hit", "4": "Double", "5": "Double", "6": "Double", "7": "Hit", "8": "Hit", "9": "Hit", "10": "Hit", "A": "Hit" },
+    "A5": { "2": "Hit", "3": "Hit", "4": "Double", "5": "Double", "6": "Double", "7": "Hit", "8": "Hit", "9": "Hit", "10": "Hit", "A": "Hit" },
+    "A6": { "2": "Hit", "3": "Double", "4": "Double", "5": "Double", "6": "Double", "7": "Hit", "8": "Hit", "9": "Hit", "10": "Hit", "A": "Hit" },
+    "A7": { "2": "Stand", "3": "Double", "4": "Double", "5": "Double", "6": "Double", "7": "Stand", "8": "Stand", "9": "Hit", "10": "Hit", "A": "Hit" }
+  },
+  "pairs": {
+    "22": { "2": "Split", "3": "Split", "4": "Split", "5": "Split", "6": "Split", "7": "Split", "8": "Hit", "9": "Hit", "10": "Hit", "A": "Hit" },
+    "33": { "2": "Split", "3": "Split", "4": "Split", "5": "Split", "6": "Split", "7": "Split", "8": "Hit", "9": "Hit", "10": "Hit", "A": "Hit" },
+    "44": { "2": "Hit", "3": "Hit", "4": "Hit", "5": "Split", "6": "Split", "7": "Hit", "8": "Hit", "9": "Hit", "10": "Hit", "A": "Hit" },
+    "55": { "2": "Double", "3": "Double", "4": "Double", "5": "Double", "6": "Double", "7": "Double", "8": "Double", "9": "Double", "10": "Hit", "A": "Hit" },
+    "66": { "2": "Split", "3": "Split", "4": "Split", "5": "Split", "6": "Split", "7": "Split", "8": "Hit", "9": "Hit", "10": "Hit", "A": "Hit" },
+    "77": { "2": "Split", "3": "Split", "4": "Split", "5": "Split", "6": "Split", "7": "Split", "8": "Split", "9": "Hit", "10": "Hit", "A": "Hit" },
+    "88": { "2": "Split", "3": "Split", "4": "Split", "5": "Split", "6": "Split", "7": "Split", "8": "Split", "9": "Split", "10": "Split", "A": "Split" }
+  }
+}

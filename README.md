@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blackjack AI Trainer (Supabase Edition)
 
-## Getting Started
+An interactive blackjack trainer app powered by:
+- 🧠 **Next.js** (App Router)
+- 🔐 **Clerk** (authentication & subscription)
+- 🗃 **Supabase** (PostgreSQL + RLS + analytics)
+- 🎨 **TailwindCSS** (modern UI)
 
-First, run the development server:
+---
+
+## 🧩 Key Features
+
+- ✅ Basic Strategy Practice with hand feedback
+- ✅ Daily limits (free tier), tracked by Supabase
+- 🔒 Pro features: unlimited hands, card counting trainer
+- 🧠 Hi-Lo card counting drills with feedback
+- 📊 Deviation trainer for true count-based adjustments
+- 📘 Reference charts built from JSON
+
+---
+
+## 📁 Folder Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+/components          → UI Components
+/lib                 → Supabase client + game logic
+/public/data         → JSON charts (basic strategy, deviations)
+/docs                → PRDs and system architecture
+/supabase/schema.sql → SQL tables + RLS setup
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Install Dependencies
+```bash
+npm install
+```
 
-## Learn More
+### 2. Add Environment Variables
+Create `.env.local`:
+```env
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_pk
+CLERK_SECRET_KEY=your_clerk_sk
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Run Dev Server
+```bash
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🧠 Supabase Schema Setup
 
-## Deploy on Vercel
+In your Supabase SQL editor, paste the contents of `/supabase/schema.sql`.
+This will:
+- Create tables: `users`, `hand_history`, `drill_sessions`
+- Link rows to Clerk user IDs via JWT claim (`sub`)
+- Enforce RLS (Row Level Security)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔐 Clerk Setup
+- Go to [Clerk Dashboard](https://dashboard.clerk.com/)
+- Create a new application
+- Get your **publishable** and **secret** keys
+- Add them to `.env.local`
+
+---
+
+## 📦 JSON Chart Files
+- `/public/data/basicStrategy.json`
+- `/public/data/countDeviations.json`
+
+Used by `basicStrategy.ts` and `countingLogic.ts` in `/lib/`.
+
+---
+
+## 🧪 Testing
+- Navigate to `/practice` to test strategy trainer
+- Navigate to `/counting` to test card counting drill
+
+---
+
+## 📘 Docs
+All product requirement documents are stored in `/docs/`:
+- Basic Strategy Module
+- Card Counting System
+- Tier System & Monetization
+- Charts & Visuals
+- Convex-to-Supabase migration (this one)
+
+---
+
+> For any issues, inspect the browser console or Supabase logs.
+> Deployment target: [Vercel](https://vercel.com) (auto-connected to GitHub repo).
+

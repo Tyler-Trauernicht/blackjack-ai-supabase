@@ -1,0 +1,59 @@
+// /public/data/countDeviations.json
+[
+  {
+    "player": "16",
+    "dealer": "10",
+    "basic": "Hit",
+    "deviation": "Stand",
+    "trueCount": 0
+  },
+  {
+    "player": "15",
+    "dealer": "10",
+    "basic": "Hit",
+    "deviation": "Stand",
+    "trueCount": 4
+  },
+  {
+    "player": "13",
+    "dealer": "2",
+    "basic": "Hit",
+    "deviation": "Stand",
+    "trueCount": -1
+  },
+  {
+    "player": "12",
+    "dealer": "3",
+    "basic": "Hit",
+    "deviation": "Stand",
+    "trueCount": 2
+  },
+  {
+    "player": "12",
+    "dealer": "2",
+    "basic": "Hit",
+    "deviation": "Stand",
+    "trueCount": 3
+  },
+  {
+    "player": "11",
+    "dealer": "A",
+    "basic": "Double",
+    "deviation": "Hit",
+    "trueCount": 1
+  },
+  {
+    "player": "10",
+    "dealer": "10",
+    "basic": "Double",
+    "deviation": "Hit",
+    "trueCount": -1
+  },
+  {
+    "player": "10",
+    "dealer": "A",
+    "basic": "Double",
+    "deviation": "Hit",
+    "trueCount": 3
+  }
+]

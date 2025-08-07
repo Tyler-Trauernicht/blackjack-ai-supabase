@@ -1,0 +1,17 @@
+/* /app/globals.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-white text-black dark:bg-black dark:text-white font-sans;
+}
+
+button {
+  @apply transition-all duration-200;
+}
+
+input {
+  @apply dark:bg-neutral-800 dark:text-white;
+}

@@ -1,39 +1,52 @@
 import { NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs/server';
-import { createClient } from '@/lib/supabase/server';
+import { auth, clerkClient } from '@clerk/nextjs/server';
+import type { ClerkClient } from '@clerk/backend';
+import { getSupabaseAdmin } from '@/lib/supabase/admin';
 
 export async function POST(req: Request) {
   try {
-    const { userId: clerk_user_id } = auth();
+    const { userId: clerk_user_id } = await auth();
     if (!clerk_user_id) {
       return new NextResponse('Unauthorized', { status: 401 });
     }
 
     const body = await req.json();
-    const { playerHand, dealerCard, userAction, correctAction, result } = body;
+    const { playerHand, dealerCard, userAction, correctAction, result, trueCount } = body;
 
-    const supabase = createClient();
+    const supabaseAdmin = getSupabaseAdmin();
 
-    // First, get the internal user ID from the clerk_user_id
-    const { data: userData, error: userError } = await supabase
+    const { data: existingUser } = await supabaseAdmin
       .from('users')
       .select('id')
       .eq('clerk_user_id', clerk_user_id)
       .single();
 
-    if (userError || !userData) {
-      console.error('Error fetching user:', userError);
-      return new NextResponse('User not found', { status: 404 });
+    let userId: string | null = existingUser?.id ?? null;
+    if (!userId) {
+      const cc = (clerkClient as unknown as () => Promise<ClerkClient>);
+      const client = await cc();
+      const clerkUser = await client.users.getUser(clerk_user_id);
+      const email = clerkUser.emailAddresses[0]?.emailAddress || null;
+      const { data: inserted, error: insertError } = await supabaseAdmin
+        .from('users')
+        .insert({ clerk_user_id, email, tier: 'free' })
+        .select('id')
+        .single();
+      if (insertError) {
+        console.error('Error creating user:', insertError);
+        return new NextResponse('Failed to setup user', { status: 500 });
+      }
+      userId = inserted.id;
     }
 
-    // Now, insert into hand_history with the correct user_id
-    const { error: logError } = await supabase.from('hand_history').insert({
-      user_id: userData.id,
+    const { error: logError } = await supabaseAdmin.from('hand_history').insert({
+      user_id: userId,
       player_hand: playerHand,
       dealer_card: dealerCard,
       user_action: userAction,
       correct_action: correctAction,
-      result: result,
+      result: Boolean(result),
+      true_count: typeof trueCount === 'number' ? trueCount : null,
     });
 
     if (logError) {
@@ -41,7 +54,7 @@ export async function POST(req: Request) {
       return new NextResponse('Failed to log hand', { status: 500 });
     }
 
-    return new NextResponse('Hand logged successfully', { status: 200 });
+    return NextResponse.json({ ok: true });
   } catch (error) {
     console.error('[PRACTICE_LOG_POST]', error);
     return new NextResponse('Internal Server Error', { status: 500 });

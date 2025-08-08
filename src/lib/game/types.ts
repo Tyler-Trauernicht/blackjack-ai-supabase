@@ -8,4 +8,4 @@ export interface Card {
 
 export type Hand = Card[];
 
-export type Action = 'Hit' | 'Stand' | 'Double' | 'Split' | 'Surrender';
+export type Action = 'Hit' | 'Stand' | 'Double' | 'Split' | 'Surrender'; 

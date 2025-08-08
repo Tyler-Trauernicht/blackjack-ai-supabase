@@ -18,7 +18,7 @@ create table hand_history (
   dealer_card text,
   user_action text,
   correct_action text,
-  result text,
+  result boolean,
   true_count int,
   created_at timestamp default now()
 );
@@ -30,6 +30,7 @@ create table drill_sessions (
   count_type text,
   correct int,
   total int,
+  submitted_count int,
   created_at timestamp default now()
 );
 
